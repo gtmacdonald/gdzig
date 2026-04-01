@@ -1,8 +1,5 @@
 /// Constructs a [Rect2](https://gdzig.github.io/gdzig/#gdzig.builtin.rect2.Rect2) with its `position` and `size` set to `Vector2i.ZERO`.
-pub const init: Rect2 = .initPositionSize(
-    .initXY(0, 0),
-    .initXY(0, 0),
-);
+pub const init: Rect2 = .{ .position = .{ .x = 0, .y = 0 }, .size = .{ .x = 0, .y = 0 } };
 
 /// Constructs a [Rect2](https://gdzig.github.io/gdzig/#gdzig.builtin.rect2.Rect2) by setting its `position` to (`x`, `y`), and its `size` to (`width`, `height`).
 ///

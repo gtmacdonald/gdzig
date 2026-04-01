@@ -22,38 +22,38 @@
 /// If a [Vector3](https://gdzig.github.io/gdzig/#gdzig.builtin.vector3.Vector3) or another [Basis](https://gdzig.github.io/gdzig/#gdzig.builtin.basis.Basis) is transformed (multiplied) by this constant, no transformation occurs.
 ///
 /// **Note:** In GDScript, this constant is equivalent to creating a [constructor Basis] without any arguments. It can be used to make your code clearer, and for consistency with C#.
-pub const identity: Basis = .initXAxisYAxisZAxis(
-    .initXYZ(1, 0, 0),
-    .initXYZ(0, 1, 0),
-    .initXYZ(0, 0, 1),
-);
+pub const identity: Basis = .{
+    .x = .{ .x = 1, .y = 0, .z = 0 },
+    .y = .{ .x = 0, .y = 1, .z = 0 },
+    .z = .{ .x = 0, .y = 0, .z = 1 },
+};
 
 /// When any basis is multiplied by `FLIP_X`, it negates all components of the `x` axis (the X column).
 ///
 /// When `FLIP_X` is multiplied by any basis, it negates the `Vector3.x` component of all axes (the X row).
-pub const flip_x: Basis = .initXAxisYAxisZAxis(
-    .initXYZ(-1, 0, 0),
-    .initXYZ(0, 1, 0),
-    .initXYZ(0, 0, 1),
-);
+pub const flip_x: Basis = .{
+    .x = .{ .x = -1, .y = 0, .z = 0 },
+    .y = .{ .x = 0, .y = 1, .z = 0 },
+    .z = .{ .x = 0, .y = 0, .z = 1 },
+};
 
 /// When any basis is multiplied by `FLIP_Y`, it negates all components of the `y` axis (the Y column).
 ///
 /// When `FLIP_Y` is multiplied by any basis, it negates the `Vector3.y` component of all axes (the Y row).
-pub const flip_y: Basis = .initXAxisYAxisZAxis(
-    .initXYZ(1, 0, 0),
-    .initXYZ(0, -1, 0),
-    .initXYZ(0, 0, 1),
-);
+pub const flip_y: Basis = .{
+    .x = .{ .x = 1, .y = 0, .z = 0 },
+    .y = .{ .x = 0, .y = -1, .z = 0 },
+    .z = .{ .x = 0, .y = 0, .z = 1 },
+};
 
 /// When any basis is multiplied by `FLIP_Z`, it negates all components of the `z` axis (the Z column).
 ///
 /// When `FLIP_Z` is multiplied by any basis, it negates the `Vector3.z` component of all axes (the Z row).
-pub const flip_z: Basis = .initXAxisYAxisZAxis(
-    .initXYZ(1, 0, 0),
-    .initXYZ(0, 1, 0),
-    .initXYZ(0, 0, -1),
-);
+pub const flip_z: Basis = .{
+    .x = .{ .x = 1, .y = 0, .z = 0 },
+    .y = .{ .x = 0, .y = 1, .z = 0 },
+    .z = .{ .x = 0, .y = 0, .z = -1 },
+};
 
 /// Constructs a [Basis](https://gdzig.github.io/gdzig/#gdzig.builtin.basis.Basis) identical to `IDENTITY`.
 ///
