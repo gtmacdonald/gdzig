@@ -493,8 +493,16 @@ pub const Parameter = struct {
                 .primitive = try std.fmt.allocPrint(allocator, "@enumFromInt({s})", .{default}),
             };
         } else if (self.type == .flag) {
+            // Zig 0.15: @bitCast needs a sized source operand, so cast the raw
+            // default through the flag's backing integer type (matching the
+            // flag-constant codegen in codegen.zig). A bare @bitCast(0) fails
+            // because the literal is a comptime_int with no fixed bit width.
+            const repr: []const u8 = if (ctx.flags.get(self.type.flag)) |flag| switch (flag.representation) {
+                .u32 => "u32",
+                .u64 => "u64",
+            } else "u32";
             self.default = .{
-                .primitive = try std.fmt.allocPrint(allocator, "@bitCast({s})", .{default}),
+                .primitive = try std.fmt.allocPrint(allocator, "@bitCast(@as({s}, {s}))", .{ repr, default }),
             };
         } else {
             self.default = try .parse(allocator, default, ctx);
